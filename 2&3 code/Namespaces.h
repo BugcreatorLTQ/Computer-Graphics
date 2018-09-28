@@ -1,0 +1,6 @@
+#include"point.h"
+#include"Window.h"
+#include"Test.h"
+#include"LoopPoint.h"
+#include"Line.h"
+#include"Circle.h"
