@@ -1,0 +1,53 @@
+#include "clip.h"
+
+static class Window
+{
+    static int Left;
+    static int Right;
+    static int Top;
+    static int Bottom;
+    void Set(const int left, const int right, const int top, const int bottom);
+}
+
+
+void Set(const int left, const int right, const int top, const int bottom)
+{
+    this.Left = left;
+    this.Right = right;
+    this.Top = top;
+    this.Bottom = bottom;
+}
+
+/*  名称 ：裁减直线
+    参数 ：(x1,y1) (x2,y2) (x3,y3) 构成直线的两个点坐标
+         
+  
+	       left right top bottom 分别为矩形裁减框的上下左右4个边界
+
+
+
+          left
+		   |----------------|top 补充:如左图 裁减框右上角坐标为(right, top);
+		   |                |
+		   |                |
+		   |                |
+   bottom  |----------------|
+	                      right
+	   
+	  
+		返回值：修改后的点的x,y坐标，由于采用“引用”的方式传递参数，所以直接修改参数x,y的数值即可
+                返回为裁减之后直线两点坐标
+  
+        return的返回值  0:直线在裁减框外，被舍弃
+		                1:直线完全在裁减框内，或者与裁减框有交点,保留
+
+*/
+
+
+
+int clipLine(int left ,int right,int top ,int bottom,float &x1,float &y1,float &x2,float &y2)
+{
+  
+    
+    return 1;
+}
