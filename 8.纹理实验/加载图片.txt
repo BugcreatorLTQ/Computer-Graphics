@@ -1,0 +1,17 @@
+
+
+AUX_RGBImageRec *LoadBMP(CHAR *Filename)				// 载入位图图象
+{
+	FILE *File=NULL;									// 文件句柄
+	if (!Filename)										// 确保文件名已提供
+	{
+		return NULL;									// 如果没提供，返回 NULL
+	}
+	File=fopen(Filename,"r");							// 尝试打开文件
+	if (File)											// 文件存在么?
+	{
+		fclose(File);									// 关闭句柄
+		return auxDIBImageLoadA(Filename);				// 载入位图并返回指针
+	}
+	return NULL;										// 如果载入失败，返回 NULL
+}

@@ -1,0 +1,39 @@
+试验步骤
+
+step 1: 环境配置
+1.配置opengl开发环境
+2.解压123.rar到桌面
+3.进入123目录，用VC打开123.dsw文件（把123.dsw拖到VC上即可）
+4.执行，检查效果
+5.打开123.cpp文件
+
+step 2: 纹理相关函数加入
+
+1.打开 “加载图片.txt",在程序最开始（include及全局变量定义之后)加入里面的函数(LoadBMP)
+
+2.打开"加载纹理.txt".在上一步的函数后面,加入文件里的函数(LoadGLTexture)
+  
+
+3.在main函数前,填写新的函数,用来进行纹理初始化 
+
+  texture_init()
+{
+   LoadGLTexture();
+   glEnable(GL_TEXTURE_2D);
+}
+4.打开"绘制立方体.txt",在LoadGLTexture后面加入新的函数(drawCube)
+
+step 3: (制作纹理素材)
+   1.打开画板,建立任意的一个图片,大小设置为128X128,并保存为123.bmp(务必保存成24位bmp格式)
+   2.把123.bmp存放在step1中解压的目录的data文件夹下，此时应该已经有一个
+     123.bmp ,替换即可（也可以在默认图片上进行图片大小的修改）
+step 4: 测试文理 
+
+   1.在main函数glutCreateWindow函数后面,调用纹理初始化的函数texture_init
+   2. 找到renderScene函数，在glRotatef函数后面加入绘制立方体的函数 
+      drawCube
+   3.运行,测试效果
+ 
+step 5:
+   1.参考幻灯片“第5章_纹理映射“与“柱面-球面坐标系“把纹理贴到一个圆柱体和一个球体上
+ 

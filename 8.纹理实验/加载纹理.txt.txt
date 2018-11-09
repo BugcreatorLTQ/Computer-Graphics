@@ -1,0 +1,31 @@
+int LoadGLTexture()									// 载入位图(调用上面的代码)并转换成纹理
+{
+	int Status=FALSE;									// 状态指示器
+	AUX_RGBImageRec *TextureImage[1];					// 创建纹理的存储空间
+	memset(TextureImage,0,sizeof(void *)*1);			// 将指针设为 NULL
+	// 载入位图，检查有无错误，如果位图没找到则退出
+	if (TextureImage[0]=LoadBMP("Data/123.bmp"))
+	{
+		Status=TRUE;									// 将 Status 设为 TRUE
+		glGenTextures(1, &texture[0]);					// 创建纹理
+
+		// 使用来自位图数据生成 的典型纹理
+		glBindTexture(GL_TEXTURE_2D, texture[0]);
+		// 生成纹理
+		glTexImage2D(GL_TEXTURE_2D, 0, 3, TextureImage[0]->sizeX, TextureImage[0]->sizeY, 0, GL_RGB, GL_UNSIGNED_BYTE, TextureImage[0]->data);
+
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	// 线形滤波
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);	// 线形滤波
+	}
+
+	if (TextureImage[0])								// 纹理是否存在
+	{
+		if (TextureImage[0]->data)						// 纹理图像是否存在
+		{
+			free(TextureImage[0]->data);				// 释放纹理图像占用的内存
+		}
+
+		free(TextureImage[0]);							// 释放图像结构
+	}
+	return Status;										// 返回 Status
+}
